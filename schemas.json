@@ -1,0 +1,37 @@
+{
+      "ackqueue":"string",
+      "apply":"false",
+      "defaultqueue":"string",
+      "descr":"",
+      "direction":"any",
+      "disabled":"false",
+      "dnpipe":"string",
+      "dst":"string",
+      "dstport":"string",
+      "floating":"false",
+      "gateway":"string",
+      "icmptype":[
+         "althost"
+      ],
+      "interface":[
+         "string"
+      ],
+      "ipprotocol":"inet",
+      "log":"false",
+      "pdnpipe":"string",
+      "protocol":"any",
+      "quick":"false",
+      "sched":"string",
+      "src":"string",
+      "srcport":"string",
+      "statetype":"keep state",
+      "tcpflags_any":"false",
+      "tcpflags1":[
+         "fin"
+      ],
+      "tcpflags2":[
+         "fin"
+      ],
+      "top":"false",
+      "type":""
+   }
