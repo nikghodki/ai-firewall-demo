@@ -1,45 +1,84 @@
-**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
+# Firewall Management Assistant
 
-When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
+## Overview
 
-*We recommend that you open this README in another tab as you perform the tasks below. You can [watch our video](https://youtu.be/0ocf7u76WSo) for a full demo of all the steps in this tutorial. Open the video in a new tab to avoid leaving Bitbucket.*
+The Firewall Management Assistant is a tool designed to help manage firewall rules for pfSense firewalls. It provides functionalities to add, delete, and edit firewall rules through a conversational interface.
 
----
+## Features
 
-## Edit a file
+- **Add Firewall Rule**: Create new firewall rules based on user input.
+- **Edit Firewall Rule**: Modify existing firewall rules.
+- **Delete Firewall Rule**: Remove firewall rules based on user input.
+- **Get Firewall Rules**: Retrieve and display current firewall rules.
 
-You’ll start by editing this README file to learn how to edit a file in Bitbucket.
+## Prerequisites
 
-1. Click **Source** on the left side.
-2. Click the README.md link from the list of files.
-3. Click the **Edit** button.
-4. Delete the following text: *Delete this line to make a change to the README from Bitbucket.*
-5. After making your change, click **Commit** and then **Commit** again in the dialog. The commit page will open and you’ll see the change you just made.
-6. Go back to the **Source** page.
+- Python
+- pip
+- RabbitMQ
+- OpenAI API Key
 
----
+## Installation
 
-## Create a file
+1. Clone the repository:
+    ```sh
+    git clone <repository-url>
+    cd <repository-folder>
+    ```
 
-Next, you’ll add a new file to this repository.
+2. Install the required Python packages:
+    ```sh
+    pip install -r requirements.txt
+    ```
 
-1. Click the **New file** button at the top of the **Source** page.
-2. Give the file a filename of **contributors.txt**.
-3. Enter your name in the empty file space.
-4. Click **Commit** and then **Commit** again in the dialog.
-5. Go back to the **Source** page.
+3. Set up RabbitMQ:
+    - Ensure RabbitMQ is installed and running on your machine.
+    - Create a queue named `firewall_rules`.
 
-Before you move on, go ahead and explore the repository. You've already seen the **Source** page, but check out the **Commits**, **Branches**, and **Settings** pages.
+4. Set the OpenAI API Key:
+    ```sh
+    export OPENAI_API_KEY=<your-openai-api-key>
+    ```
 
----
+## Running the Application
 
-## Clone a repository
+1. Start the RabbitMQ consumer:
+    ```sh
+    python rabbitmq/receivemq.py
+    ```
 
-Use these steps to clone from SourceTree, our client for using the repository command-line free. Cloning allows you to work on your files locally. If you don't yet have SourceTree, [download and install first](https://www.sourcetreeapp.com/). If you prefer to clone from the command line, see [Clone a repository](https://confluence.atlassian.com/x/4whODQ).
+2. Run the main application:
+    ```sh
+    python botservice/main.py
+    ```
 
-1. You’ll see the clone button under the **Source** heading. Click that button.
-2. Now click **Check out in SourceTree**. You may need to create a SourceTree account or log in.
-3. When you see the **Clone New** dialog in SourceTree, update the destination path and name if you’d like to and then click **Clone**.
-4. Open the directory you just created to see your repository’s files.
+## Environment Variables
 
-Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
+- `OPENAI_API_KEY`: Your OpenAI API key.
+
+## Configuration
+
+- **config_file_path**: Path to the JSON configuration file for creating firewall rules.
+- **rules_file_path**: Path to the JSON file containing the current firewall rules.
+- **new_rule_config_file**: Path to the JSON file for new firewall rule configuration.
+
+## Usage
+
+1. Open the Gradio interface.
+2. Interact with the assistant by typing commands such as:
+    - "Get Firewall Rules."
+    - "Show Firewall Rules."
+    - "Create a firewall rule to allow access to IP 192.168.1.10 from 10.64.10.1 with source port as 8081 and destination port as 8081, on WAN interface, protocol TCP, Description: Allow access to Arjun for pfSense."
+    - "Delete rule with description test."
+
+## Contributing
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Commit your changes (`git commit -am 'Add new feature'`).
+4. Push to the branch (`git push origin feature-branch`).
+5. Create a new Pull Request.
+
+## License
+
+This project is licensed under the MIT License.
