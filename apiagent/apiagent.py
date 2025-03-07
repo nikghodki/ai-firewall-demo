@@ -16,8 +16,8 @@ create_schema = {
 }
 
 firewall_host_ip="35.185.19.16"
-token='61646d696e'
-key='fc9de5ea51838a087ca31974d43d1f7a'
+token=''
+key=''
 authtoken = f"{token} {key}"
 def main():
     connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
