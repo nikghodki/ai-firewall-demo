@@ -1,6 +1,5 @@
 import pika, sys, os
 
-
 def main():
     connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
     channel = connection.channel()
@@ -8,8 +7,7 @@ def main():
     channel.queue_declare(queue='firewall_rules')
 
     def callback(ch, method, properties, body):
-        print("Output is %r" % body)
-
+        print(" [x] Received %r" % body)
 
     channel.basic_consume(queue='firewall_rules', on_message_callback=callback, auto_ack=True)
 

@@ -1,0 +1,14 @@
+{
+  "descr": "",
+  "dst": "string",
+  "dstport": "443",
+  "interface": [
+    "WAN"
+  ],
+  "ipprotocol": "inet",
+  "protocol": "TCP",
+  "src": "string",
+  "srcport": "80",
+  "type": "pass",
+  "todo": ""
+}
